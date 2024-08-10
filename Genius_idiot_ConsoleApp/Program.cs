@@ -6,6 +6,7 @@
         {
            while (true)
             {
+                loop:
                 List<string> questions = TakeQuestions();
                 List<string> answers = TakeAnswers();
                 int RightAnswerCount = 0;
@@ -18,6 +19,8 @@
                     int indexOfCurrectQuestion = rnd.Next(questions.Count);
                     Console.WriteLine($"Вопрос N{numberOfQuestion++}: {questions[indexOfCurrectQuestion]}");
                     string YourAnswer = TakeYourAnswer();
+                    if (YourAnswer == "10010")
+                        goto loop;
                     if (YourAnswer == answers[indexOfCurrectQuestion])
                         RightAnswerCount++;
                     questions.RemoveAt(indexOfCurrectQuestion);
