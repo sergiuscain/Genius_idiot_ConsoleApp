@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genius_idiot_ConsoleApp", "Genius_idiot_ConsoleApp\Genius_idiot_ConsoleApp.csproj", "{60AA6075-119B-48E4-9CF3-E15596D82F75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{0DD4448A-37ED-4456-A357-78328177FF9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniusIdiot_WinForms", "WinFormsApp1\GeniusIdiot_WinForms.csproj", "{0DD4448A-37ED-4456-A357-78328177FF9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
