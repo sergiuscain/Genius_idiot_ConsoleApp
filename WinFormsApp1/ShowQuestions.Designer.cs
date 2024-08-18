@@ -32,6 +32,10 @@
             Question = new DataGridViewTextBoxColumn();
             Answer = new DataGridViewTextBoxColumn();
             AddQuestion = new Button();
+            yourQuestionTextBox = new TextBox();
+            yourAnswerTextBox = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)ResultsGridView).BeginInit();
             SuspendLayout();
             // 
@@ -60,7 +64,7 @@
             AddQuestion.BackgroundImageLayout = ImageLayout.Center;
             AddQuestion.FlatStyle = FlatStyle.Flat;
             AddQuestion.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
-            AddQuestion.Location = new Point(702, 6);
+            AddQuestion.Location = new Point(702, 9);
             AddQuestion.Name = "AddQuestion";
             AddQuestion.Size = new Size(42, 41);
             AddQuestion.TabIndex = 1;
@@ -69,17 +73,55 @@
             AddQuestion.UseVisualStyleBackColor = false;
             AddQuestion.Click += AddQuestion_Click;
             // 
+            // yourQuestionTextBox
+            // 
+            yourQuestionTextBox.Location = new Point(395, 27);
+            yourQuestionTextBox.Name = "yourQuestionTextBox";
+            yourQuestionTextBox.Size = new Size(195, 23);
+            yourQuestionTextBox.TabIndex = 2;
+            // 
+            // yourAnswerTextBox
+            // 
+            yourAnswerTextBox.Location = new Point(596, 27);
+            yourAnswerTextBox.Name = "yourAnswerTextBox";
+            yourAnswerTextBox.Size = new Size(100, 23);
+            yourAnswerTextBox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(395, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Вопрос";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(596, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Ответ";
+            // 
             // ShowQuestions
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(yourAnswerTextBox);
+            Controls.Add(yourQuestionTextBox);
             Controls.Add(AddQuestion);
             Controls.Add(ResultsGridView);
             Name = "ShowQuestions";
             Text = "ShowQuestions";
+            Load += ShowQuestions_Load;
             ((System.ComponentModel.ISupportInitialize)ResultsGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -88,5 +130,9 @@
         public DataGridViewTextBoxColumn Question;
         public DataGridViewTextBoxColumn Answer;
         private Button AddQuestion;
+        private TextBox yourQuestionTextBox;
+        private TextBox yourAnswerTextBox;
+        private Label label1;
+        private Label label2;
     }
 }

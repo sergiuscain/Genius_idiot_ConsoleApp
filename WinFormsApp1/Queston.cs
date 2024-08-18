@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GeniusIdiot_WinForms
 {
-    internal class Question
+    public class Question
     {
-        string question;
-        int answer;
+        public string question;
+        public int answer;
         public Question(string question, int answer)
         {
             this.question = question;
