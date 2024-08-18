@@ -17,42 +17,35 @@ namespace GeniusIdiot_WinForms
         public ShowQuestions()
         {
             InitializeComponent();
-
-
         }
 
         private void AddQuestion_Click(object sender, EventArgs e)
         {
-            
-             
                 string question = yourQuestionTextBox.Text;
                 string answer = yourAnswerTextBox.Text;
-                questionStorage.AddQuest(pathOfQuestions, question, Convert.ToInt32( answer));
+            if (int.TryParse(answer, out int answerInt))
+            {
+                questionStorage.AddQuest(pathOfQuestions, question, Convert.ToInt32(answerInt));
+                ResultsGridView.Rows.Add(question, answerInt);
+            }
+            else
+                MessageBox.Show("В поле ответа вводится число!!");
             
-             
-
         }
 
         private void ShowQuestions_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (File.Exists("questions.txt"))
-                {
-                    questionStorage.ReadQuestions("questions.txt");
-                    foreach (var questionAndAnswer in questionStorage)
-                    {
-                        if (questionAndAnswer != null)
-                        {
-                            ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
-                        }
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error reading questions from file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+           if (File.Exists("questions.txt"))
+           {
+             questionStorage.ReadQuestions("questions.txt");
+             foreach (var questionAndAnswer in questionStorage)
+             {
+                 if (questionAndAnswer != null)
+                 {                         
+                   ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
+                 }
+             }
             }
         }
     }
