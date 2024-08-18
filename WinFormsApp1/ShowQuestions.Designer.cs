@@ -82,6 +82,7 @@
             // 
             // yourAnswerTextBox
             // 
+            yourAnswerTextBox.BackColor = SystemColors.InactiveCaption;
             yourAnswerTextBox.Location = new Point(596, 27);
             yourAnswerTextBox.Name = "yourAnswerTextBox";
             yourAnswerTextBox.Size = new Size(100, 23);
@@ -90,6 +91,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveBorder;
             label1.Location = new Point(395, 9);
             label1.Name = "label1";
             label1.Size = new Size(48, 15);
@@ -99,6 +101,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveBorder;
             label2.Location = new Point(596, 9);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
@@ -109,6 +112,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(label2);
             Controls.Add(label1);

@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1;
 
 namespace GeniusIdiot_WinForms
 {
     public partial class PlayForm : Form
     {
-        public PlayForm()
+        Form formtoopen;
+        public PlayForm(Form main)
         {
             InitializeComponent();
+            MainMenuForm.ActiveForm.Hide();
+            formtoopen = main;
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            formtoopen.Show();
+            MainMenuForm.ActiveForm.Show();
+            this.Close();
         }
     }
 }

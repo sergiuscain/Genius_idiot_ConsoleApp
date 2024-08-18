@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "PlayForm";
+            BackButton = new Button();
+            SuspendLayout();
+            // 
+            // BackButton
+            // 
+            BackButton.BackColor = SystemColors.GradientInactiveCaption;
+            BackButton.FlatStyle = FlatStyle.Flat;
+            BackButton.Location = new Point(713, 415);
+            BackButton.Name = "BackButton";
+            BackButton.Size = new Size(75, 23);
+            BackButton.TabIndex = 0;
+            BackButton.Text = "Back";
+            BackButton.UseVisualStyleBackColor = false;
+            BackButton.Click += BackButton_Click;
+            // 
+            // PlayForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(800, 450);
+            Controls.Add(BackButton);
+            Name = "PlayForm";
+            Text = "PlayForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button BackButton;
     }
 }

@@ -2,9 +2,9 @@ using GeniusIdiot_WinForms;
 
 namespace WinFormsApp1
 {
-    public partial class MainMenu : Form
+    public partial class MainMenuForm : Form
     {
-        public MainMenu()
+        public MainMenuForm()
         {
             InitializeComponent();
             
@@ -23,7 +23,7 @@ namespace WinFormsApp1
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            var playForm = new PlayForm();
+            var playForm = new PlayForm(this);
             playForm.ShowDialog();
         }
 

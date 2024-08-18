@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class MainMenu
+    partial class MainMenuForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -45,7 +45,7 @@
             PlayButton.TabIndex = 0;
             PlayButton.Text = "Начать игру";
             PlayButton.UseVisualStyleBackColor = true;
-            PlayButton.Click += this.PlayButton_Click;
+            PlayButton.Click += PlayButton_Click;
             // 
             // ShowResultsButton
             // 
@@ -58,7 +58,7 @@
             ShowResultsButton.TabIndex = 1;
             ShowResultsButton.Text = "Показать рузультаты";
             ShowResultsButton.UseVisualStyleBackColor = true;
-            ShowResultsButton.Click += this.ShowResultsButton_Click;
+            ShowResultsButton.Click += ShowResultsButton_Click;
             // 
             // ShowQuestionsButton
             // 
@@ -86,7 +86,7 @@
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
-            // MainMenu
+            // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -96,7 +96,7 @@
             Controls.Add(ShowQuestionsButton);
             Controls.Add(ShowResultsButton);
             Controls.Add(PlayButton);
-            Name = "MainMenu";
+            Name = "MainMenuForm";
             Text = "Form1";
             ResumeLayout(false);
         }
