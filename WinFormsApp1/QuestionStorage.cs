@@ -48,7 +48,7 @@ namespace GeniusIdiot_WinForms
             return this.GetEnumerator();
         }
 
-        internal void ReadQuestions(string path)
+        public void ReadQuestions(string path)
         {
             StreamReader reader = new StreamReader(path, Encoding.UTF8);
             while (!reader.EndOfStream)

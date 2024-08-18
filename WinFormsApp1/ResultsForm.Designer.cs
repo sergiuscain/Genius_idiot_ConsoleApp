@@ -66,7 +66,6 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(dataGridView1);
-            Name = "ResultsForm";
             Text = "ResultsForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

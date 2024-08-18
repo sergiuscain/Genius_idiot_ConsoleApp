@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             BackButton = new Button();
+            textQuestLabel = new Label();
+            userAnswerTextBox = new TextBox();
+            nextQuestion = new Button();
             SuspendLayout();
             // 
             // BackButton
             // 
-            BackButton.BackColor = SystemColors.GradientInactiveCaption;
+            BackButton.BackColor = SystemColors.ActiveCaption;
             BackButton.FlatStyle = FlatStyle.Flat;
-            BackButton.Location = new Point(713, 415);
+            BackButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            BackButton.Location = new Point(713, 334);
             BackButton.Name = "BackButton";
             BackButton.Size = new Size(75, 23);
             BackButton.TabIndex = 0;
@@ -43,20 +47,56 @@
             BackButton.UseVisualStyleBackColor = false;
             BackButton.Click += BackButton_Click;
             // 
+            // textQuestLabel
+            // 
+            textQuestLabel.AutoSize = true;
+            textQuestLabel.Location = new Point(12, 19);
+            textQuestLabel.Name = "textQuestLabel";
+            textQuestLabel.Size = new Size(38, 15);
+            textQuestLabel.TabIndex = 1;
+            textQuestLabel.Text = "label1";
+            // 
+            // userAnswerTextBox
+            // 
+            userAnswerTextBox.Location = new Point(8, 37);
+            userAnswerTextBox.Name = "userAnswerTextBox";
+            userAnswerTextBox.Size = new Size(413, 23);
+            userAnswerTextBox.TabIndex = 2;
+            // 
+            // nextQuestion
+            // 
+            nextQuestion.FlatStyle = FlatStyle.Flat;
+            nextQuestion.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            nextQuestion.Location = new Point(331, 66);
+            nextQuestion.Name = "nextQuestion";
+            nextQuestion.Size = new Size(90, 27);
+            nextQuestion.TabIndex = 3;
+            nextQuestion.Text = "Далее";
+            nextQuestion.UseVisualStyleBackColor = true;
+            nextQuestion.Click += nextQuestion_Click;
+            // 
             // PlayForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(853, 370);
+            Controls.Add(nextQuestion);
+            Controls.Add(userAnswerTextBox);
+            Controls.Add(textQuestLabel);
             Controls.Add(BackButton);
             Name = "PlayForm";
             Text = "PlayForm";
+            Load += PlayForm_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button BackButton;
+        private Label textQuestLabel;
+        private TextBox userAnswerTextBox;
+        private Button nextQuestion;
     }
 }
