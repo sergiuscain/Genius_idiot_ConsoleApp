@@ -28,12 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ResultsForm";
+            dataGridView1 = new DataGridView();
+            Name = new DataGridViewTextBoxColumn();
+            CountRightAnswers = new DataGridViewTextBoxColumn();
+            Diagnose = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, CountRightAnswers, Diagnose });
+            dataGridView1.Location = new Point(1, 1);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(343, 449);
+            dataGridView1.TabIndex = 0;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Имя";
+            Name.Name = "Name";
+            // 
+            // CountRightAnswers
+            // 
+            CountRightAnswers.HeaderText = "Кол-во правильных ответов";
+            CountRightAnswers.Name = "CountRightAnswers";
+            // 
+            // Diagnose
+            // 
+            Diagnose.HeaderText = "Диагноз";
+            Diagnose.Name = "Diagnose";
+            // 
+            // ResultsForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
+            Text = "ResultsForm";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn CountRightAnswers;
+        private DataGridViewTextBoxColumn Diagnose;
     }
 }

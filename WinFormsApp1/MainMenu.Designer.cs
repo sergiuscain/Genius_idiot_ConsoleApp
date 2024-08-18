@@ -45,6 +45,7 @@
             PlayButton.TabIndex = 0;
             PlayButton.Text = "Начать игру";
             PlayButton.UseVisualStyleBackColor = true;
+            PlayButton.Click += this.PlayButton_Click;
             // 
             // ShowResultsButton
             // 
@@ -57,6 +58,7 @@
             ShowResultsButton.TabIndex = 1;
             ShowResultsButton.Text = "Показать рузультаты";
             ShowResultsButton.UseVisualStyleBackColor = true;
+            ShowResultsButton.Click += this.ShowResultsButton_Click;
             // 
             // ShowQuestionsButton
             // 

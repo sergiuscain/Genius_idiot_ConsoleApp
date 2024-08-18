@@ -17,8 +17,20 @@ namespace WinFormsApp1
 
         private void ShowQuestionsButton_Click(object sender, EventArgs e)
         {
-            var resultForm = new ResultsForm();
-            resultForm.ShowDialog();
+            var  showQuestions = new ShowQuestions();
+            showQuestions.ShowDialog();
+        }
+
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+            var playForm = new PlayForm();
+            playForm.ShowDialog();
+        }
+
+        private void ShowResultsButton_Click(object sender, EventArgs e)
+        {
+            var resultsForm = new ResultsForm();
+            resultsForm.ShowDialog();
         }
     }
 }
