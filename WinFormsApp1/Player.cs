@@ -11,7 +11,7 @@ namespace GeniusIdiot_WinForms
         public int countRightAnswers;
         public string name;
         public string diagnose;
-        string path = "results.txt";
+        public static string path = "results.txt";
         public Player()
         {
             countRightAnswers = 0;

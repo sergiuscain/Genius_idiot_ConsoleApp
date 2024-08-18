@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            resultsGridView = new DataGridView();
             Name = new DataGridViewTextBoxColumn();
             CountRightAnswers = new DataGridViewTextBoxColumn();
             Diagnose = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)resultsGridView).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // resultsGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, CountRightAnswers, Diagnose });
-            dataGridView1.Location = new Point(1, 1);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(343, 449);
-            dataGridView1.TabIndex = 0;
+            resultsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resultsGridView.Columns.AddRange(new DataGridViewColumn[] { Name, CountRightAnswers, Diagnose });
+            resultsGridView.Location = new Point(1, 1);
+            resultsGridView.Name = "resultsGridView";
+            resultsGridView.Size = new Size(343, 449);
+            resultsGridView.TabIndex = 0;
             // 
             // Name
             // 
@@ -64,16 +64,17 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(343, 447);
+            Controls.Add(resultsGridView);
             Text = "ResultsForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ResultsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)resultsGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView resultsGridView;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn CountRightAnswers;
         private DataGridViewTextBoxColumn Diagnose;

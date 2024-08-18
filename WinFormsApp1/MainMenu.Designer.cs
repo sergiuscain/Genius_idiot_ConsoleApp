@@ -32,6 +32,8 @@
             ShowResultsButton = new Button();
             ShowQuestionsButton = new Button();
             ExitButton = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // PlayButton
@@ -86,18 +88,31 @@
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Black;
+            pictureBox1.ErrorImage = GeniusIdiot_WinForms.Properties.Resources.genius1;
+            pictureBox1.Image = GeniusIdiot_WinForms.Properties.Resources.genius;
+            pictureBox1.Location = new Point(283, -7);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1036, 596);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1331, 601);
+            Controls.Add(pictureBox1);
             Controls.Add(ExitButton);
             Controls.Add(ShowQuestionsButton);
             Controls.Add(ShowResultsButton);
             Controls.Add(PlayButton);
             Name = "MainMenuForm";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -107,5 +122,6 @@
         private Button ShowResultsButton;
         private Button ShowQuestionsButton;
         private Button ExitButton;
+        private PictureBox pictureBox1;
     }
 }
