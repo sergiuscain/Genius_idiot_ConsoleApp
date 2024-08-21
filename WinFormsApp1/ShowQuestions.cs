@@ -24,9 +24,16 @@ namespace GeniusIdiot_WinForms
                 string answer = yourAnswerTextBox.Text;
             if (int.TryParse(answer, out int answerInt))
             {
-               // questionStorage.AddQuestToTxtFile(question, answerInt);
-                questionStorage.AddQuestToJSONFile(question, answerInt);
-                ResultsGridView.Rows.Add(question, answerInt);
+                if (string.IsNullOrWhiteSpace(question))
+                {
+                    MessageBox.Show("Вопрос не может быть пустым!!");
+                }
+                else
+                {
+                    // questionStorage.AddQuestToTxtFile(question, answerInt);
+                    questionStorage.AddQuestToJSONFile(question, answerInt);
+                    ResultsGridView.Rows.Add(question, answerInt);
+                }
             }
             else
                 MessageBox.Show("В поле ответа вводится число!!");

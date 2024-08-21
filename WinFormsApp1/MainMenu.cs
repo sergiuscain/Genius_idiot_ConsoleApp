@@ -23,8 +23,20 @@ namespace WinFormsApp1
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            var playForm = new PlayForm(this);
-            playForm.ShowDialog();
+            if(File.Exists(QuestionStorage.pathOfJSONQuestions))
+            {
+                if(new FileInfo(QuestionStorage.pathOfJSONQuestions).Length < 2)
+                {
+                    MessageBox.Show("Необходимо добавить вопросы!!");
+                }
+                else
+                {
+                    var playForm = new PlayForm(this);
+                    playForm.ShowDialog();
+                }
+            } 
+            else
+                MessageBox.Show("Файл с вопросами не найден!\nПожалуйста, добавьте новые вопросы. ");
         }
 
         private void ShowResultsButton_Click(object sender, EventArgs e)
