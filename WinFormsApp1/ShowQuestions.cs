@@ -24,7 +24,8 @@ namespace GeniusIdiot_WinForms
                 string answer = yourAnswerTextBox.Text;
             if (int.TryParse(answer, out int answerInt))
             {
-                questionStorage.AddQuestToTxtFile(question, Convert.ToInt32(answerInt));
+               // questionStorage.AddQuestToTxtFile(question, answerInt);
+                questionStorage.AddQuestToJSONFile(question, answerInt);
                 ResultsGridView.Rows.Add(question, answerInt);
             }
             else
@@ -34,7 +35,8 @@ namespace GeniusIdiot_WinForms
 
         private void ShowQuestions_Load(object sender, EventArgs e)
         {
-            ReadAndAddQuestionsFromTxtFile();
+           // ReadAndAddQuestionsFromTxtFile();
+           ReadAndAddQuestionsFromJSONFile();
         }
 
         private void ReadAndAddQuestionsFromTxtFile()

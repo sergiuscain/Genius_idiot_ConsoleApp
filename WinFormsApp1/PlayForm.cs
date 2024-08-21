@@ -28,7 +28,8 @@ namespace GeniusIdiot_WinForms
             InitializeComponent();
             MainMenuForm.ActiveForm.Hide();
             formtoopen = main;
-            questions.ReadQuestionsFromTxtFile();
+            //questions.ReadQuestionsFromTxtFile();
+            questions.ReadQuestionsFromJSONFile();
             countQuestions = questions.questions.Count;
         }
 
@@ -44,7 +45,14 @@ namespace GeniusIdiot_WinForms
         {
             string userAnswerStr = userAnswerTextBox.Text;
             if (questions.questions.Count < 1)
+            {
                 player.calculateDiagnose(questions.questions.Count);
+                //player.SaveResultsAsTxtFile();
+                player.SaveResultsAsJSONFile();
+                formtoopen.Show();
+                MainMenuForm.ActiveForm.Show();
+                this.Close();
+            }
             if (int.TryParse(userAnswerStr, out int userAnswer))
             {
                 int rightAnswer = questions.questions[randomQuestionIndex].answer;
@@ -56,7 +64,8 @@ namespace GeniusIdiot_WinForms
                 if (questions.questions.Count < 1)
                 {
                     player.calculateDiagnose(countQuestions);
-                    player.SaveResultsAsTxtFile();
+                    //player.SaveResultsAsTxtFile();
+                    player.SaveResultsAsJSONFile();
                     formtoopen.Show();
                     MainMenuForm.ActiveForm.Show();
                     this.Close();

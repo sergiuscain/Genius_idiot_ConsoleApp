@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,6 @@ namespace GeniusIdiot_WinForms
 {
     public partial class ResultsForm : Form
     {
-        string path = Player.pathOfTxtResults;
         public ResultsForm()
         {
             InitializeComponent();
@@ -20,9 +20,16 @@ namespace GeniusIdiot_WinForms
 
         private void ResultsForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(path))
+            //LoadResultsFromTxtFile();
+            LoadResultsFromJsonFile();
+
+        }
+
+        private void LoadResultsFromTxtFile()
+        {
+            if (File.Exists(Player.pathOfTxtResults))
             {
-                StreamReader reader = new StreamReader(path, Encoding.UTF8);
+                StreamReader reader = new StreamReader(Player.pathOfTxtResults, Encoding.UTF8);
                 while (!reader.EndOfStream)
                 {
                     String[] lines = reader.ReadLine().Split("~");
@@ -32,10 +39,29 @@ namespace GeniusIdiot_WinForms
             }
             else
             {
-                File.Create(path).Close();
-                MessageBox.Show("Отсутствуют результаты.");
+                File.Create(Player.pathOfTxtResults).Close();
             }
-            
+        }
+
+        private void LoadResultsFromJsonFile()
+        {
+            if (File.Exists(Player.pathOfJSONResults))
+            {
+                if (new FileInfo(Player.pathOfJSONResults).Length > 2)
+                {
+                    string jsonData = File.ReadAllText(Player.pathOfJSONResults); //json файл в виде строки. 
+                    List<Player> list = JsonConvert.DeserializeObject<List<Player>>(jsonData);
+                    foreach (Player p in list)
+                    {
+                        string[] lines = {p.name, p.countRightAnswers.ToString(), p.diagnose};
+                        resultsGridView.Rows.Add(lines);
+                    }
+                }
+                else
+                {
+                    File.Create(Player.pathOfJSONResults).Close();
+                }
+            }
         }
     }
 }

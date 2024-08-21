@@ -96,7 +96,7 @@ namespace GeniusIdiot_WinForms
         {
             if (File.Exists(pathOfJSONQuestions))
             {
-                if(new FileInfo(pathOfJSONQuestions).Length > 1)
+                if(new FileInfo(pathOfJSONQuestions).Length > 2)
                 {
                     string jSONData = File.ReadAllText(pathOfJSONQuestions); //json файл в виде строки. 
                     List<Question> list = JsonConvert.DeserializeObject<List<Question>>(jSONData);
@@ -106,7 +106,7 @@ namespace GeniusIdiot_WinForms
                 }
                 else
                 {
-                    string jSONData = JsonConvert.SerializeObject(new Question(question, answer));
+                    string jSONData = JsonConvert.SerializeObject(new List<Question> { new Question(question, answer) });
                     File.WriteAllText(pathOfJSONQuestions, jSONData);
                 }
             }
