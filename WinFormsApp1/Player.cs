@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,31 @@ namespace GeniusIdiot_WinForms
             {
                 File.Create(pathOfTxtResults).Close();
                 SaveResultsAsTxtFile();
+            }
+        }
+
+        internal void SaveResultsAsJSONFile()
+        {
+            if (File.Exists(pathOfJSONResults))
+            {
+                if (new FileInfo(pathOfJSONResults).Length > 2)
+                {
+                    string jSONData = File.ReadAllText(pathOfJSONResults); //json файл в виде строки. 
+                    List<Player> list = JsonConvert.DeserializeObject<List<Player>>(jSONData);
+                    list.Add(this);
+                    string newJSONData = JsonConvert.SerializeObject(list);
+                    File.WriteAllText(pathOfJSONResults, newJSONData);
+                }
+                else
+                {
+                    string newJSONData = JsonConvert.SerializeObject(new List<Player> { this });
+                    File.WriteAllText(pathOfJSONResults, newJSONData);
+                }
+            }
+            else
+            {
+                File.Create(pathOfJSONResults).Close();
+                SaveResultsAsJSONFile();
             }
         }
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -89,6 +90,11 @@ namespace GeniusIdiot_WinForms
                     list.Add(new Question(question, answer));
                     string newJSONData = JsonConvert.SerializeObject(list);
                     File.WriteAllText(pathOfJSONQuestions, newJSONData);
+                }
+                else
+                {
+                    string jSONData = JsonConvert.SerializeObject(new Question(question, answer));
+                    File.WriteAllText(pathOfJSONQuestions, jSONData);
                 }
             }
             else
