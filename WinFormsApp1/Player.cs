@@ -11,7 +11,8 @@ namespace GeniusIdiot_WinForms
         public int countRightAnswers;
         public string name;
         public string diagnose;
-        public static string path = "results.txt";
+        public static string pathOfTxtResults = "results.txt";
+        public static string pathOfJSONResults = "results.json";
         public Player()
         {
             countRightAnswers = 0;
@@ -34,18 +35,18 @@ namespace GeniusIdiot_WinForms
             MessageBox.Show(diagnose);
         }
 
-        internal void SaveResults()
+        internal void SaveResultsAsTxtFile()
         {
-            if (File.Exists(path))
+            if (File.Exists(pathOfTxtResults))
             {
-                StreamWriter writer = new StreamWriter(path, true, Encoding.UTF8);
+                StreamWriter writer = new StreamWriter(pathOfTxtResults, true, Encoding.UTF8);
                 writer.WriteLine($"{name}~{countRightAnswers}~{diagnose}");
                 writer.Close();
             }
             else
             {
-                File.Create(path).Close();
-                SaveResults();
+                File.Create(pathOfTxtResults).Close();
+                SaveResultsAsTxtFile();
             }
         }
     }

@@ -12,7 +12,7 @@ namespace GeniusIdiot_WinForms
 {
     public partial class ResultsForm : Form
     {
-        string path = Player.path;
+        string path = Player.pathOfTxtResults;
         public ResultsForm()
         {
             InitializeComponent();

@@ -56,7 +56,7 @@ namespace GeniusIdiot_WinForms
                 if (questions.questions.Count < 1)
                 {
                     player.calculateDiagnose(countQuestions);
-                    player.SaveResults();
+                    player.SaveResultsAsTxtFile();
                     formtoopen.Show();
                     MainMenuForm.ActiveForm.Show();
                     this.Close();
