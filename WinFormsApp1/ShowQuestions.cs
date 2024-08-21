@@ -34,18 +34,35 @@ namespace GeniusIdiot_WinForms
 
         private void ShowQuestions_Load(object sender, EventArgs e)
         {
-            
-           if (File.Exists("questions.txt"))
-           {
-             questionStorage.ReadQuestions("questions.txt");
-             foreach (var questionAndAnswer in questionStorage)
-             {
-                 if (questionAndAnswer != null)
-                 {                         
-                   ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
-                 }
-             }
+            ReadAndAddQuestionsFromTxtFile();
+        }
+
+        private void ReadAndAddQuestionsFromTxtFile()
+        {
+            if (File.Exists(QuestionStorage.pathOfTxtQuestions))
+            {
+                questionStorage.ReadQuestionsFromTxtFile();
+                foreach (var questionAndAnswer in questionStorage)
+                {
+                    if (questionAndAnswer != null)
+                    {
+                        ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
+                    }
+                }
             }
+        }
+
+        private void ReadAndAddQuestionsFromJSONFile()
+        {   
+                questionStorage.ReadQuestionsFromJSONFile();
+                foreach (var questionAndAnswer in questionStorage)
+                {
+                    if (questionAndAnswer != null)
+                    {
+                        ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
+                    }
+                }
+            
         }
     }
 }

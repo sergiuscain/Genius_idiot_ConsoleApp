@@ -28,7 +28,7 @@ namespace GeniusIdiot_WinForms
             InitializeComponent();
             MainMenuForm.ActiveForm.Hide();
             formtoopen = main;
-            questions.ReadQuestions(pathOfQuestions);
+            questions.ReadQuestionsFromTxtFile();
             countQuestions = questions.questions.Count;
         }
 

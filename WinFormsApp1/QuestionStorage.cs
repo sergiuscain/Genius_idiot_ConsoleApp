@@ -52,15 +52,28 @@ namespace GeniusIdiot_WinForms
             return this.GetEnumerator();
         }
 
-        public void ReadQuestions(string path)
+        public void ReadQuestionsFromTxtFile()
         {
-            StreamReader reader = new StreamReader(path, Encoding.UTF8);
+            StreamReader reader = new StreamReader(pathOfTxtQuestions, Encoding.UTF8);
             while (!reader.EndOfStream)
             {
                 String[] lines = reader.ReadLine().Split("~");
                 questions.Add(new Question(lines[0], Convert.ToInt32(lines[1])));
             }
             reader.Close();
+        }
+
+        public void ReadQuestionsFromJSONFile()
+        {
+            if(File.Exists(pathOfJSONQuestions))
+            {
+                if(new FileInfo(pathOfJSONQuestions).Length > 2)
+                {
+                    string jSONData = File.ReadAllText(pathOfJSONQuestions); //json файл в виде строки.
+                    List<Question> list = JsonConvert.DeserializeObject<List<Question>>(jSONData);
+                    questions.AddRange(list);
+                }
+            }
         }
 
         internal void AddQuestToTxtFile(string question, int answer)
