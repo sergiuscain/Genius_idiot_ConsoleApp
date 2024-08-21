@@ -13,7 +13,6 @@ namespace GeniusIdiot_WinForms
     public partial class ShowQuestions : Form
     {
         QuestionStorage questionStorage = new QuestionStorage();
-        string pathOfQuestions = "questions.txt";
         public ShowQuestions()
         {
             InitializeComponent();
@@ -25,7 +24,7 @@ namespace GeniusIdiot_WinForms
                 string answer = yourAnswerTextBox.Text;
             if (int.TryParse(answer, out int answerInt))
             {
-                questionStorage.AddQuest(pathOfQuestions, question, Convert.ToInt32(answerInt));
+                questionStorage.AddQuestToTxtFile(question, Convert.ToInt32(answerInt));
                 ResultsGridView.Rows.Add(question, answerInt);
             }
             else

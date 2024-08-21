@@ -9,6 +9,8 @@ namespace GeniusIdiot_WinForms
 {
     public class QuestionStorage : IEnumerable<Question> , IEnumerator<Question>
     {
+        public static string pathOfTxtQuestions = "questions.txt";
+        public static string pathOfJSONQuestions = "questions.json";
         public QuestionStorage()
         {
             questions = new List<Question>();
@@ -59,20 +61,37 @@ namespace GeniusIdiot_WinForms
             reader.Close();
         }
 
-        internal void AddQuest(string path, string question, int answer)
+        internal void AddQuestToTxtFile(string question, int answer)
         {
-            if (File.Exists(path))
+            if (File.Exists(pathOfTxtQuestions))
             {
-                StreamWriter writer = new StreamWriter(path, true, Encoding.UTF8);
+                StreamWriter writer = new StreamWriter(pathOfTxtQuestions, true, Encoding.UTF8);
                 writer.WriteLine($"{question}~{answer}");
                 writer.Close();
             }
             else
             {
-                File.Create(path).Close();
-                AddQuest(path, question, answer);
+                File.Create(pathOfTxtQuestions).Close();
+                AddQuestToTxtFile(question, answer);
             }
             
+        }
+
+        internal void AddQuestToJSONFile(string question, int answer)
+        {
+            if (File.Exists(pathOfJSONQuestions))
+            {
+                if(new FileInfo(pathOfJSONQuestions).Length > 1)
+                {
+                    string data = File.ReadAllText(pathOfJSONQuestions); //json файл в виде строки. 
+                }
+            }
+            else
+            {
+                File.Create(pathOfJSONQuestions).Close();
+                AddQuestToTxtFile(question, answer);
+            }
+
         }
     }
 
