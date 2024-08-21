@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,7 +84,11 @@ namespace GeniusIdiot_WinForms
             {
                 if(new FileInfo(pathOfJSONQuestions).Length > 1)
                 {
-                    string data = File.ReadAllText(pathOfJSONQuestions); //json файл в виде строки. 
+                    string jSONData = File.ReadAllText(pathOfJSONQuestions); //json файл в виде строки. 
+                    List<Question> list = JsonConvert.DeserializeObject<List<Question>>(jSONData);
+                    list.Add(new Question(question, answer));
+                    string newJSONData = JsonConvert.SerializeObject(list);
+                    File.WriteAllText(pathOfJSONQuestions, newJSONData);
                 }
             }
             else
