@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,8 +21,8 @@ namespace GeniusIdiot_WinForms
 
         private void AddQuestion_Click(object sender, EventArgs e)
         {
-                string question = yourQuestionTextBox.Text;
-                string answer = yourAnswerTextBox.Text;
+            string question = yourQuestionTextBox.Text;
+            string answer = yourAnswerTextBox.Text;
             if (int.TryParse(answer, out int answerInt))
             {
                 if (string.IsNullOrWhiteSpace(question))
@@ -32,18 +33,19 @@ namespace GeniusIdiot_WinForms
                 {
                     // questionStorage.AddQuestToTxtFile(question, answerInt);
                     questionStorage.AddQuestToJSONFile(question, answerInt);
+                    questionStorage.questions.Add(new Question(question, answerInt));
                     ResultsGridView.Rows.Add(question, answerInt);
                 }
             }
             else
                 MessageBox.Show("В поле ответа вводится число!!");
-            
+
         }
 
         private void ShowQuestions_Load(object sender, EventArgs e)
         {
-           // ReadAndAddQuestionsFromTxtFile();
-           ReadAndAddQuestionsFromJSONFile();
+            // ReadAndAddQuestionsFromTxtFile();
+            ReadAndAddQuestionsFromJSONFile();
         }
 
         private void ReadAndAddQuestionsFromTxtFile()
@@ -62,16 +64,32 @@ namespace GeniusIdiot_WinForms
         }
 
         private void ReadAndAddQuestionsFromJSONFile()
-        {   
-                questionStorage.ReadQuestionsFromJSONFile();
-                foreach (var questionAndAnswer in questionStorage)
+        {
+            questionStorage.ReadQuestionsFromJSONFile();
+            foreach (var questionAndAnswer in questionStorage)
+            {
+                if (questionAndAnswer != null)
                 {
-                    if (questionAndAnswer != null)
-                    {
-                        ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
-                    }
+                    ResultsGridView.Rows.Add(questionAndAnswer.question, questionAndAnswer.answer);
                 }
-            
+            }
+
+        }
+
+        private void delQuestionButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            int rowIndex = ResultsGridView.CurrentCell.RowIndex;
+            ResultsGridView.Rows.RemoveAt(rowIndex);
+            questionStorage.questions.RemoveAt(rowIndex);
+            string jSONData = JsonConvert.SerializeObject(questionStorage.questions);
+            File.WriteAllText(QuestionStorage.pathOfJSONQuestions, jSONData);
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Please select rows!");
+            }
         }
     }
 }

@@ -36,6 +36,7 @@
             yourAnswerTextBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            delQuestionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)ResultsGridView).BeginInit();
             SuspendLayout();
             // 
@@ -108,12 +109,26 @@
             label2.TabIndex = 5;
             label2.Text = "Ответ";
             // 
+            // delQuestionButton
+            // 
+            delQuestionButton.BackColor = Color.FromArgb(255, 192, 192);
+            delQuestionButton.FlatStyle = FlatStyle.Flat;
+            delQuestionButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            delQuestionButton.Location = new Point(702, 56);
+            delQuestionButton.Name = "delQuestionButton";
+            delQuestionButton.Size = new Size(42, 48);
+            delQuestionButton.TabIndex = 6;
+            delQuestionButton.Text = "-";
+            delQuestionButton.UseVisualStyleBackColor = false;
+            delQuestionButton.Click += delQuestionButton_Click;
+            // 
             // ShowQuestions
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(760, 448);
+            Controls.Add(delQuestionButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(yourAnswerTextBox);
@@ -138,5 +153,6 @@
         private TextBox yourAnswerTextBox;
         private Label label1;
         private Label label2;
+        private Button delQuestionButton;
     }
 }
