@@ -17,6 +17,14 @@ namespace GeniusIdiot_WinForms
         {
             questions = new List<Question>();
         }
+        public static List<Question> standartQuestions = new List<Question>()
+        {
+            new Question("Сколько будет два плюс два умножить на два:", 6),
+            new Question("Кто был основателем компании Microsoft?\n 1) Билл Гейтс 2)Марк Цукерберг 3)Сергей Брин", 1),
+            new Question("На каком языке написан linux?\n1)Basic 2)Ada 3)C 4)Lina", 3),
+            new Question("Какое из перечисленных языков программирования является объектно-ориентированным?\n 1)JavaScript 2)1C 3)BrainFuck 4)C", 1),
+            new Question("Какой из перечисленных языков появился раньше ?\n 1)C++ 2)SQL 3)Ada",2)
+        };
 
         public List<Question> questions;
         private int index = -1;
@@ -116,6 +124,11 @@ namespace GeniusIdiot_WinForms
                 AddQuestToTxtFile(question, answer);
             }
 
+        }
+        public static void SaveQuestionsAsJSONFile(List<Question> newQuestions)
+        {
+            string jSONData = JsonConvert.SerializeObject(newQuestions);
+            File.WriteAllText(pathOfJSONQuestions, jSONData);
         }
     }
 

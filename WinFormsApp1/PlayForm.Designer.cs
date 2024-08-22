@@ -50,7 +50,8 @@
             // textQuestLabel
             // 
             textQuestLabel.AutoSize = true;
-            textQuestLabel.Location = new Point(12, 19);
+            textQuestLabel.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
+            textQuestLabel.Location = new Point(8, 22);
             textQuestLabel.Name = "textQuestLabel";
             textQuestLabel.Size = new Size(38, 15);
             textQuestLabel.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             // userAnswerTextBox
             // 
-            userAnswerTextBox.Location = new Point(8, 37);
+            userAnswerTextBox.Location = new Point(8, 63);
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(413, 23);
             userAnswerTextBox.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             nextQuestion.FlatStyle = FlatStyle.Flat;
             nextQuestion.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            nextQuestion.Location = new Point(331, 66);
+            nextQuestion.Location = new Point(331, 97);
             nextQuestion.Name = "nextQuestion";
             nextQuestion.Size = new Size(90, 27);
             nextQuestion.TabIndex = 3;

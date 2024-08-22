@@ -34,9 +34,12 @@ namespace WinFormsApp1
                     var playForm = new PlayForm(this);
                     playForm.ShowDialog();
                 }
-            } 
+            }
             else
-                MessageBox.Show("Файл с вопросами не найден!\nПожалуйста, добавьте новые вопросы. ");
+            {
+                QuestionStorage.SaveQuestionsAsJSONFile(QuestionStorage.standartQuestions);
+                MessageBox.Show("Файл с вопросами не найден!\nДобовляем стандартные вопросы... ");
+            }
         }
 
         private void ShowResultsButton_Click(object sender, EventArgs e)

@@ -77,14 +77,15 @@
             // yourQuestionTextBox
             // 
             yourQuestionTextBox.Location = new Point(395, 27);
+            yourQuestionTextBox.Multiline = true;
             yourQuestionTextBox.Name = "yourQuestionTextBox";
-            yourQuestionTextBox.Size = new Size(195, 23);
+            yourQuestionTextBox.Size = new Size(195, 49);
             yourQuestionTextBox.TabIndex = 2;
             // 
             // yourAnswerTextBox
             // 
             yourAnswerTextBox.BackColor = SystemColors.InactiveCaption;
-            yourAnswerTextBox.Location = new Point(596, 27);
+            yourAnswerTextBox.Location = new Point(596, 43);
             yourAnswerTextBox.Name = "yourAnswerTextBox";
             yourAnswerTextBox.Size = new Size(100, 23);
             yourAnswerTextBox.TabIndex = 3;
@@ -116,7 +117,7 @@
             delQuestionButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             delQuestionButton.Location = new Point(702, 56);
             delQuestionButton.Name = "delQuestionButton";
-            delQuestionButton.Size = new Size(42, 48);
+            delQuestionButton.Size = new Size(42, 42);
             delQuestionButton.TabIndex = 6;
             delQuestionButton.Text = "-";
             delQuestionButton.UseVisualStyleBackColor = false;
