@@ -23,19 +23,19 @@ namespace WinFormsApp1
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            if(File.Exists(QuestionStorage.pathOfJSONQuestions))
+            if(File.Exists(QuestionStorage.pathOfJSONQuestions)) //Если JSON файл с вопросами существует
             {
-                if(new FileInfo(QuestionStorage.pathOfJSONQuestions).Length < 2)
+                if(new FileInfo(QuestionStorage.pathOfJSONQuestions).Length < 2) //если он пустой
                 {
                     MessageBox.Show("Необходимо добавить вопросы!!");
                 }
-                else
+                else //иначе начинаем игру
                 {
                     var playForm = new PlayForm(this);
                     playForm.ShowDialog();
                 }
             }
-            else
+            else //Если файла не сушествует, создаем его и добавляем туда список стандартных вопросов(хранятся в QuestionStorage.standartQuestions)
             {
                 QuestionStorage.SaveQuestionsAsJSONFile(QuestionStorage.standartQuestions);
                 MessageBox.Show("Файл с вопросами не найден!\nДобовляем стандартные вопросы... ");
