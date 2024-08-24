@@ -13,8 +13,45 @@ namespace _2048
     public partial class PlayForm : Form
     {
         Form mainMenuForm;
-        public static int mapSize = 4;
-        private int blockSize = 80;
+        public static int mapSize
+        {
+            get { return mapSize; }
+            set
+            {
+                if (value < 2)
+                {
+                    MessageBox.Show("The map cannot be less than two blocks.");
+                }
+                else if (value > 10)
+                {
+                    MessageBox.Show("The map cannot be more than 10 blocks.");
+                }
+                else
+                {
+                    mapSize = value;
+                }
+            }
+        }
+        public static int blockSize
+        {
+            get { return blockSize; }
+            set
+            {
+                if (value < 10)
+                {
+                    MessageBox.Show("The block size cannot be less than 10 pixels.");
+                }
+                else if (value > 200)
+                {
+                    MessageBox.Show("The block size cannot be more than 200 pixels.");
+                }
+                else
+                {
+                    blockSize = value;
+                }
+
+            }
+        }
 
         public PlayForm(Form backForm)
         {
