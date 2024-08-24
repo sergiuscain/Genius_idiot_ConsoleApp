@@ -33,6 +33,7 @@
             exit_Button = new Button();
             label1 = new Label();
             name_textBox = new TextBox();
+            settings_Button = new Button();
             SuspendLayout();
             // 
             // play_Button
@@ -89,12 +90,25 @@
             name_textBox.Size = new Size(100, 23);
             name_textBox.TabIndex = 4;
             // 
+            // settings_Button
+            // 
+            settings_Button.FlatStyle = FlatStyle.Flat;
+            settings_Button.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            settings_Button.Location = new Point(321, 85);
+            settings_Button.Name = "settings_Button";
+            settings_Button.Size = new Size(116, 51);
+            settings_Button.TabIndex = 5;
+            settings_Button.Text = "Settings";
+            settings_Button.UseVisualStyleBackColor = true;
+            settings_Button.Click += settings_Button_Click;
+            // 
             // MainMenu_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(457, 148);
+            Controls.Add(settings_Button);
             Controls.Add(name_textBox);
             Controls.Add(label1);
             Controls.Add(exit_Button);
@@ -113,5 +127,6 @@
         private Button exit_Button;
         private Label label1;
         private TextBox name_textBox;
+        private Button settings_Button;
     }
 }

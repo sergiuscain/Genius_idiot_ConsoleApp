@@ -13,9 +13,17 @@ namespace _2048
     public partial class PlayForm : Form
     {
         Form mainMenuForm;
+        private static int _mapSize = 4;
+        private static int _blockSize = 80;
+        Random random = new Random();
+        Label[,] map = new Label[mapSize, mapSize];
+        string[] numbers = { "2","4"};
         public static int mapSize
         {
-            get { return mapSize; }
+            get
+            {
+                return _mapSize;
+            }
             set
             {
                 if (value < 2)
@@ -28,13 +36,13 @@ namespace _2048
                 }
                 else
                 {
-                    mapSize = value;
+                    _mapSize = value;
                 }
             }
         }
         public static int blockSize
         {
-            get { return blockSize; }
+            get { return _blockSize; }
             set
             {
                 if (value < 10)
@@ -47,7 +55,7 @@ namespace _2048
                 }
                 else
                 {
-                    blockSize = value;
+                    _blockSize = value;
                 }
 
             }
@@ -68,20 +76,34 @@ namespace _2048
         private void PlayForm_Load(object sender, EventArgs e)
         {
             CreateMap(mapSize);
+            CreateRandomBlock();
         }
 
-        private void CreateMap(int mapSize)
+        private void CreateRandomBlock()
         {
-            for (int i = 0; i < mapSize; i++)
+            int randomX = random.Next(0, _mapSize);
+            int randomY = random.Next(0, _mapSize);
+            if (map[randomX, randomY].Text == "")
             {
-                for (int j = 0; j < mapSize; j++)
+                map[randomX, randomY].Text = numbers[random.Next(2)];
+              //  UpdateLabel(randomX, randomY);
+            }
+        }
+
+
+        private void CreateMap(int _mapSize)
+        {
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = 0; j < _mapSize; j++)
                 {
                     Label label = new Label();
                     label.Text = "0";
-                    label.Location = new Point(25 + (blockSize +6) * j, 60 + (blockSize +6) * i);
-                    label.Size = new Size(blockSize, blockSize);
+                    label.Location = new Point(25 + (_blockSize +6) * j, 60 + (_blockSize +6) * i);
+                    label.Size = new Size(_blockSize, _blockSize);
                     label.BackColor = Color.Azure;
                     this.Controls.Add(label);
+                    map[i, j] = label;
                 }
             }
         }

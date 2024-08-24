@@ -25,5 +25,11 @@ namespace _2048
                 MessageBox.Show("¬ведите им€!");
             }
         }
+
+        private void settings_Button_Click(object sender, EventArgs e)
+        {
+            var settings = new SettingsForm();
+            settings.ShowDialog();
+        }
     }
 }
