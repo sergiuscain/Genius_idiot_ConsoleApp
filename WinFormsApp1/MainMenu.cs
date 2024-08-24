@@ -25,9 +25,10 @@ namespace WinFormsApp1
         {
             if(File.Exists(QuestionStorage.pathOfJSONQuestions)) //Если JSON файл с вопросами существует
             {
-                if(new FileInfo(QuestionStorage.pathOfJSONQuestions).Length < 2) //если он пустой
+                if(new FileInfo(QuestionStorage.pathOfJSONQuestions).Length < 5) //если он пустой
                 {
-                    MessageBox.Show("Необходимо добавить вопросы!!");
+                    QuestionStorage.SaveQuestionsAsJSONFile(QuestionStorage.standartQuestions);
+                    MessageBox.Show("Файл с вопросами не найден!\nДобовляем стандартные вопросы... ");
                 }
                 else //иначе начинаем игру
                 {
