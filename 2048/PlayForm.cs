@@ -16,7 +16,7 @@ namespace _2048
         private static int _mapSize = 4;
         private static int _blockSize = 80;
         Random random = new Random();
-        Label[,] map = new Label[mapSize, mapSize];
+        Label[,] map = new Label[_mapSize, _mapSize];
         string[] numbers = { "2", "4" };
         public static int mapSize
         {
@@ -122,7 +122,45 @@ namespace _2048
         {
             if (e.KeyCode == Keys.Left)
             {
-                MessageBox.Show(Keys.Left.ToString());
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    for (int j = 0; j < _mapSize; j++)
+                    {
+                        if (map[i, j].Text != "")
+                        {
+                            for (int k = j +1 ; k < _mapSize; k++)
+                            {
+                                if (map[i, k].Text != "")
+                                {
+                                    if (map[k, j].Text == map[i, k].Text)
+                                    {
+                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                        map[i, k].Text = "";
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    for (int j = 0; j < _mapSize; j++)
+                    {
+                        if (map[i, j].Text == "")
+                        {
+                            for (int k = j + 1; k < _mapSize; k++)
+                            {
+                                if (map[i, k].Text != "")
+                                {
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = "";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (e.KeyCode == Keys.Right)
             {
@@ -155,24 +193,119 @@ namespace _2048
                         {
                             for (int k = j - 1; k >= 0; k--)
                             {
-                                map[i,j].Text = map[i,k].Text;
-                                map[i, k].Text = "";
-                                break;  
+                                if (map[i,k].Text != "")
+                                {
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = "";
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-                CreateRandomBlock();
             }
             if (e.KeyCode == Keys.Down)
             {
-               MessageBox.Show(Keys.Down.ToString());
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    for (int j = 0; j < mapSize; j++)
+                    {
+                        if (map[i, j].Text != "")
+                        {
+                            for (int k = j + 1; k < _mapSize; k++)
+                            {
+                                if (map[i, k].Text != "")
+                                {
+                                    if (map[i, k].Text == map[i, j].Text)
+                                    {
+                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                        map[i, k].Text = "";
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = _mapSize - 1; i >= 0; i--)
+                {
+                    for (int j = 0; j < _mapSize; j++)
+                    {
+                        if (map[i, j].Text == "")
+                        {
+                            for (int k = j + 1; k < _mapSize; k++)
+                            {
+                                map[i, j].Text = map[i, k].Text;
+                                map[i, k].Text = "";
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             if (e.KeyCode == Keys.Up)
             {
-               MessageBox.Show(Keys.Up.ToString());
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    for (int i = 0; i < _mapSize; i++)
+                    {
+                        if (map[i, j].Text != "")
+                        {
+                            for (int k = i + 1; k < _mapSize; k++)
+                            {
+                                if (map[k, j].Text != "")
+                                {
+                                    if (map[i, j].Text == map[k, j].Text)
+                                    {
+                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                        map[k, j].Text = "";
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    for (int i = 0; i < _mapSize; i++)
+                    {
+                        if (map[i, j].Text == "")
+                        {
+                            for (int k = i + 1; k < mapSize; k++)
+                            {
+                                if ((map[k, j].Text != "")) 
+                                { 
+                                map[i, j].Text = map[k, j].Text;
+                                map[k, j].Text = "";
+                                break;
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            
+            if(!mapOverLoad())
+            CreateRandomBlock();
+            if (mapOverLoad())
+            {
+                MessageBox.Show("mapOverLoad!");
+                
+            }
+        }
+
+        private bool mapOverLoad()
+        {
+            int freeBlocks = 0;
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    if (this.map[i, j].Text  == "")
+                        freeBlocks++;
+                }
+            }
+            return freeBlocks <= 0;
         }
     }
 }
