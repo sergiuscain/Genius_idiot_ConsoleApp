@@ -34,12 +34,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size( mapSize * (blockSize + 6) * 100 / 90, mapSize * (blockSize +6) * 100 / 80 );
+            ClientSize = new Size(284, 261);
             Name = "PlayForm";
             Text = "PlayForm";
             FormClosed += PlayForm_FormClosed;
             Load += PlayForm_Load;
+            KeyDown += PlayForm_KeyDown;
             ResumeLayout(false);
         }
 

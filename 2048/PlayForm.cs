@@ -17,7 +17,7 @@ namespace _2048
         private static int _blockSize = 80;
         Random random = new Random();
         Label[,] map = new Label[mapSize, mapSize];
-        string[] numbers = { "2","4"};
+        string[] numbers = { "2", "4" };
         public static int mapSize
         {
             get
@@ -81,12 +81,15 @@ namespace _2048
 
         private void CreateRandomBlock()
         {
-            int randomX = random.Next(0, _mapSize);
-            int randomY = random.Next(0, _mapSize);
-            if (map[randomX, randomY].Text == "")
+            while (true)
             {
-                map[randomX, randomY].Text = numbers[random.Next(2)];
-              
+                int randomX = random.Next(0, _mapSize);
+                int randomY = random.Next(0, _mapSize);
+                if (map[randomX, randomY].Text == "")
+                {
+                    map[randomX, randomY].Text = numbers[random.Next(2)];
+                    break;
+                }
             }
         }
 
@@ -97,8 +100,8 @@ namespace _2048
             {
                 for (int j = 0; j < _mapSize; j++)
                 {
-                   var  newLable =  createLabel(i, j);
-                    map[i,j] = newLable;
+                    var newLable = createLabel(i, j);
+                    map[i, j] = newLable;
                 }
             }
         }
@@ -106,13 +109,70 @@ namespace _2048
         private Label createLabel(int indexRow, int indexColumn)
         {
             Label label = new Label();
-            label.Text = (indexRow * mapSize + indexColumn).ToString();
-            label.Location = new Point(25 + (_blockSize + 6) * indexColumn, 60 + (_blockSize + 6) * indexRow);
+            //label.Text = (indexRow * mapSize + indexColumn).ToString();
+            label.Location = new Point((_blockSize + 6) * indexColumn, 40 + (_blockSize + 6) * indexRow);
             label.Size = new Size(_blockSize, _blockSize);
             label.BackColor = Color.Azure;
             Controls.Add(label);
             map[indexRow, indexColumn] = label;
             return label;
+        }
+
+        private void PlayForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                MessageBox.Show(Keys.Left.ToString());
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    for (int j = _mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text != "")
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != "")
+                                {
+                                    if (map[i, k].Text == map[i, j].Text)
+                                    {
+                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                        map[i, k].Text = "";
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+               }
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    for (int j = _mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text == "")
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                map[i,j].Text = map[i,k].Text;
+                                map[i, k].Text = "";
+                                break;  
+                            }
+                        }
+                    }
+                }
+                CreateRandomBlock();
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+               MessageBox.Show(Keys.Down.ToString());
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+               MessageBox.Show(Keys.Up.ToString());
+            }
+            
         }
     }
 }

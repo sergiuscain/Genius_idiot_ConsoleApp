@@ -31,5 +31,10 @@ namespace _2048
             var settings = new SettingsForm();
             settings.ShowDialog();
         }
+
+        private void exit_Button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
