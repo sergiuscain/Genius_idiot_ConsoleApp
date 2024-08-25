@@ -86,7 +86,7 @@ namespace _2048
             if (map[randomX, randomY].Text == "")
             {
                 map[randomX, randomY].Text = numbers[random.Next(2)];
-              //  UpdateLabel(randomX, randomY);
+              
             }
         }
 
@@ -97,15 +97,22 @@ namespace _2048
             {
                 for (int j = 0; j < _mapSize; j++)
                 {
-                    Label label = new Label();
-                    label.Text = "0";
-                    label.Location = new Point(25 + (_blockSize +6) * j, 60 + (_blockSize +6) * i);
-                    label.Size = new Size(_blockSize, _blockSize);
-                    label.BackColor = Color.Azure;
-                    this.Controls.Add(label);
-                    map[i, j] = label;
+                   var  newLable =  createLabel(i, j);
+                    map[i,j] = newLable;
                 }
             }
+        }
+
+        private Label createLabel(int indexRow, int indexColumn)
+        {
+            Label label = new Label();
+            label.Text = (indexRow * mapSize + indexColumn).ToString();
+            label.Location = new Point(25 + (_blockSize + 6) * indexColumn, 60 + (_blockSize + 6) * indexRow);
+            label.Size = new Size(_blockSize, _blockSize);
+            label.BackColor = Color.Azure;
+            Controls.Add(label);
+            map[indexRow, indexColumn] = label;
+            return label;
         }
     }
 }

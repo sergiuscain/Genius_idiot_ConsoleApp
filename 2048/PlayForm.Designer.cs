@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(370, 428);
+            ClientSize = new Size( mapSize * (blockSize + 6) * 100 / 90, mapSize * (blockSize +6) * 100 / 80 );
             Name = "PlayForm";
             Text = "PlayForm";
             FormClosed += PlayForm_FormClosed;
