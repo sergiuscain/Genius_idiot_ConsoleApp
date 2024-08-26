@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             scoreLabel = new Label();
+            recordLabel = new Label();
             SuspendLayout();
             // 
             // scoreLabel
@@ -39,6 +40,14 @@
             scoreLabel.Size = new Size(0, 15);
             scoreLabel.TabIndex = 0;
             // 
+            // recordLabel
+            // 
+            recordLabel.AutoSize = true;
+            recordLabel.Location = new Point(126, 4);
+            recordLabel.Name = "recordLabel";
+            recordLabel.Size = new Size(0, 15);
+            recordLabel.TabIndex = 1;
+            // 
             // PlayForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -46,6 +55,7 @@
             AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(284, 261);
+            Controls.Add(recordLabel);
             Controls.Add(scoreLabel);
             Name = "PlayForm";
             Text = "PlayForm";
@@ -59,5 +69,6 @@
         #endregion
 
         private Label scoreLabel;
+        private Label recordLabel;
     }
 }

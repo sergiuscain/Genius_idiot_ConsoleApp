@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace _2048
 {
@@ -20,6 +21,8 @@ namespace _2048
         Label[,] map = new Label[_mapSize, _mapSize];
         string[] numbers = { "2", "4" };
         Player player;
+        int record;
+        string pathOfRecord = "record.txt";
         public static int mapSize
         {
             get
@@ -80,6 +83,8 @@ namespace _2048
         {
             CreateMap(mapSize);
             CreateRandomBlock();
+            record = GetRecord();
+            ShowScore();
         }
 
         private void CreateRandomBlock()
@@ -107,7 +112,6 @@ namespace _2048
                     map[i, j] = newLable;
                 }
             }
-            ShowScore();
         }
 
         private Label createLabel(int indexRow, int indexColumn)
@@ -317,6 +321,33 @@ namespace _2048
         private void ShowScore()
         {
             scoreLabel.Text = "Score: " + player._score;
+            if (player._score > record)
+            {
+                record = player._score;
+                recordLabel.Text = "Record: " + record;
+                ReWriteRecord(record);
+            }
+            else
+            {
+                recordLabel.Text = "Record: " + record;
+            }
+        }
+        private int GetRecord()
+        {
+            if (File.Exists(pathOfRecord))
+            {
+                string record = File.ReadAllText(pathOfRecord);
+                return int.Parse(record);
+            }
+            else
+            {
+                File.WriteAllText(pathOfRecord, "0"); 
+                return 0;
+            }
+        }
+        private void ReWriteRecord(int record)
+        {
+            File.WriteAllText(pathOfRecord, record.ToString());
         }
     }
 }
