@@ -350,6 +350,10 @@ namespace _2048
                     }
                 }
             }
+            if (e.KeyCode != Keys.Up && e.KeyCode != Keys.Down && e.KeyCode != Keys.Right && e.KeyCode != Keys.Left)
+            {
+                return;
+            }
             if(!MapOverLoad())
                 CreateRandomBlock();
             ShowScore();
