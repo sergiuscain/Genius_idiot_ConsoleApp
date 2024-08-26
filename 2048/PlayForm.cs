@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace _2048
         private static int _blockSize = 80;
         Random random = new Random();
         Label[,] map = new Label[_mapSize, _mapSize];
-        string[] numbers = { "2", "4" };
+        string[] numbers = { "2", "2" };
         public static int mapSize
         {
             get
@@ -132,7 +133,7 @@ namespace _2048
                             {
                                 if (map[i, k].Text != "")
                                 {
-                                    if (map[k, j].Text == map[i, k].Text)
+                                    if (map[i, j].Text == map[i, k].Text)
                                     {
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
                                         map[i, k].Text = "";
@@ -206,20 +207,20 @@ namespace _2048
             }
             if (e.KeyCode == Keys.Down)
             {
-                for (int i = 0; i < _mapSize; i++)
+                for (int j = 0; j < _mapSize; j++)
                 {
-                    for (int j = 0; j < mapSize; j++)
+                    for (int i = _mapSize-1; i >= 0; i--)
                     {
                         if (map[i, j].Text != "")
                         {
-                            for (int k = j + 1; k < _mapSize; k++)
+                            for (int k = i - 1; k >= 0; k--)
                             {
-                                if (map[i, k].Text != "")
+                                if (map[k, j].Text != "")
                                 {
-                                    if (map[i, k].Text == map[i, j].Text)
+                                    if (map[i, j].Text == map[k, j].Text)
                                     {
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
-                                        map[i, k].Text = "";
+                                        map[k, j].Text = "";
                                     }
                                     break;
                                 }
@@ -227,17 +228,20 @@ namespace _2048
                         }
                     }
                 }
-                for (int i = _mapSize - 1; i >= 0; i--)
+                for (int j = 0; j < _mapSize; j++)
                 {
-                    for (int j = 0; j < _mapSize; j++)
+                     for (int i = _mapSize-1; i >= 0; i--)
                     {
                         if (map[i, j].Text == "")
                         {
-                            for (int k = j + 1; k < _mapSize; k++)
+                            for (int k = i - 1; k >= 0; k--)
                             {
-                                map[i, j].Text = map[i, k].Text;
-                                map[i, k].Text = "";
-                                break;
+                                if ((map[k, j].Text != ""))
+                                {
+                                    map[i, j].Text = map[k, j].Text;
+                                    map[k, j].Text = "";
+                                    break;
+                                }
                             }
                         }
                     }
@@ -285,16 +289,11 @@ namespace _2048
                     }
                 }
             }
-            if(!mapOverLoad())
-            CreateRandomBlock();
-            if (mapOverLoad())
-            {
-                MessageBox.Show("mapOverLoad!");
-                
-            }
+            if(!MapOverLoad())
+                CreateRandomBlock();
         }
 
-        private bool mapOverLoad()
+        private bool MapOverLoad()
         {
             int freeBlocks = 0;
             for (int i = 0; i < _mapSize; i++)
@@ -305,7 +304,7 @@ namespace _2048
                         freeBlocks++;
                 }
             }
-            return freeBlocks <= 0;
+            return freeBlocks < 1;
         }
     }
 }
