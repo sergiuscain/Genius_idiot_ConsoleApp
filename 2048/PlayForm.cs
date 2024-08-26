@@ -18,7 +18,7 @@ namespace _2048
         private static int _blockSize = 80;
         Random random = new Random();
         Label[,] map = new Label[_mapSize, _mapSize];
-        string[] numbers = { "2", "2" };
+        string[] numbers = { "2", "4" };
         public static int mapSize
         {
             get
