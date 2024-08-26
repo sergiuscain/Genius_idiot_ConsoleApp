@@ -85,6 +85,50 @@ namespace _2048
             CreateRandomBlock();
             record = GetRecord();
             ShowScore();
+            SetColor();
+        }
+
+        private void SetColor()
+        {
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    switch(map[i,j].Text)
+                    {
+                        case "":
+                            map[i,j].BackColor = Color.White; break;
+                        case "2":
+                            map[i, j].BackColor = Color.LightGray; break;
+                        case "4":
+                            map[i, j].BackColor = Color.Orange; break;
+                        case "8":
+                            map[i, j].BackColor = Color.Yellow; break;
+                        case "16":
+                            map[i, j].BackColor = Color.Green; break;
+                        case "32":
+                            map[i, j].BackColor = Color.Blue; break;
+                        case "64":
+                            map[i, j].BackColor = Color.Red; break;
+                        case "128":
+                            map[i, j].BackColor = Color.Purple; break;
+                        case "256":
+                            map[i, j].BackColor = Color.DarkRed; break;
+                        case "512":
+                            map[i, j].BackColor = Color.DarkBlue; break;
+                        case "1024":
+                            map[i, j].BackColor = Color.DarkGreen; break;
+                        case "2048":
+                            map[i,j].BackColor = Color.RebeccaPurple; break;
+                        case "4096":
+                            map[i, j].BackColor = Color.Crimson; break;
+                        case "8192":
+                            map[i, j].BackColor = Color.DarkCyan; break;
+                        default:
+                            map[i, j].BackColor = Color.DarkKhaki; break;
+                    }
+                }
+            }
         }
 
         private void CreateRandomBlock()
@@ -309,6 +353,7 @@ namespace _2048
             if(!MapOverLoad())
                 CreateRandomBlock();
             ShowScore();
+            SetColor();
         }
 
         private bool MapOverLoad()
