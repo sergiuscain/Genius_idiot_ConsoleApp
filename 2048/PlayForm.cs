@@ -198,10 +198,61 @@ namespace _2048
             {
                 return;
             }
-            if(!MapOverLoad())
-                CreateRandomBlock();
+
+            if (GameOver())
+            {
+                MessageBox.Show("Game Over!");
+            }
+            if (MapOverload())
+            {
+
+            }
+            else 
+            { 
+            CreateRandomBlock();
             ShowScore();
             SetColor();
+            }
+        }
+
+        private bool MapOverload()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool GameOver()
+        {
+           for(int i = 0; i <mapSize; i++)
+            {
+                for (int j = 0; j <mapSize; j++)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        return false;
+                    }
+                }
+            }
+                for (int i = 0; i < mapSize-1; i++)
+            {
+                for (int j = 0; j < mapSize-1; j++)
+                {
+                    if ((map[i, j].Text == map[i, j+1].Text || map[i,j].Text == map[i+1, j].Text))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void MoveUp()
@@ -380,19 +431,6 @@ namespace _2048
             }
         }
 
-        private bool MapOverLoad()
-        {
-            int freeBlocks = 0;
-            for (int i = 0; i < _mapSize; i++)
-            {
-                for (int j = 0; j < _mapSize; j++)
-                {
-                    if (this.map[i, j].Text  == "")
-                        freeBlocks++;
-                }
-            }
-            return freeBlocks < 1;
-        }
         private void ShowScore()
         {
             scoreLabel.Text = "Score: " + player._score;
