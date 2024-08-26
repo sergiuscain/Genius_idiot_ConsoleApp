@@ -9,13 +9,24 @@ namespace _2048
     internal class Player
     {
         string name;
-        int score;
+        private int score;
+        public int _score
+        {
+            get
+            {
+                return score;
+            }
+            set
+            {
+                if (value > 0) score = value;
+            }
+        }
         int mapSize;
         public Player(string name)
         {
             this.name = name;
             score = 0;
-
+            mapSize = PlayForm.mapSize;
         }
     }
 }

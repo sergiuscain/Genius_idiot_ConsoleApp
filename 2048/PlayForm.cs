@@ -19,6 +19,7 @@ namespace _2048
         Random random = new Random();
         Label[,] map = new Label[_mapSize, _mapSize];
         string[] numbers = { "2", "4" };
+        Player player;
         public static int mapSize
         {
             get
@@ -62,11 +63,12 @@ namespace _2048
             }
         }
 
-        public PlayForm(Form backForm)
+        public PlayForm(Form backForm, string name)
         {
             InitializeComponent();
             mainMenuForm = backForm;
             MainMenu_Form.ActiveForm.Hide();
+            player = new Player(name);
         }
 
         private void PlayForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -105,6 +107,7 @@ namespace _2048
                     map[i, j] = newLable;
                 }
             }
+            ShowScore();
         }
 
         private Label createLabel(int indexRow, int indexColumn)
@@ -135,6 +138,7 @@ namespace _2048
                                 {
                                     if (map[i, j].Text == map[i, k].Text)
                                     {
+                                        player._score += int.Parse(map[i,j].Text)*2;
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
                                         map[i, k].Text = "";
                                     }
@@ -177,6 +181,7 @@ namespace _2048
                                 {
                                     if (map[i, k].Text == map[i, j].Text)
                                     {
+                                        player._score += int.Parse(map[i,j].Text)*2;
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
                                         map[i, k].Text = "";
                                     }
@@ -219,6 +224,7 @@ namespace _2048
                                 {
                                     if (map[i, j].Text == map[k, j].Text)
                                     {
+                                        player._score += int.Parse(map[i,j].Text)*2;
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
                                         map[k, j].Text = "";
                                     }
@@ -261,6 +267,7 @@ namespace _2048
                                 {
                                     if (map[i, j].Text == map[k, j].Text)
                                     {
+                                        player._score += int.Parse(map[i,j].Text)*2;
                                         map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
                                         map[k, j].Text = "";
                                     }
@@ -291,6 +298,7 @@ namespace _2048
             }
             if(!MapOverLoad())
                 CreateRandomBlock();
+            ShowScore();
         }
 
         private bool MapOverLoad()
@@ -305,6 +313,10 @@ namespace _2048
                 }
             }
             return freeBlocks < 1;
+        }
+        private void ShowScore()
+        {
+            scoreLabel.Text = "Score: " + player._score;
         }
     }
 }

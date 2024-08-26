@@ -16,8 +16,7 @@ namespace _2048
         {
             if (name_textBox.Text.Length > 0)
             {
-                Player player = new Player(name_textBox.Text);
-                PlayForm playForm = new PlayForm(this);
+                PlayForm playForm = new PlayForm(this, name_textBox.Text);
                 playForm.ShowDialog();
             }
             else
