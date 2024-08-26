@@ -95,7 +95,13 @@ namespace _2048
                 int randomY = random.Next(0, _mapSize);
                 if (map[randomX, randomY].Text == "")
                 {
-                    map[randomX, randomY].Text = numbers[random.Next(2)];
+                    string number;
+                    int a = random.Next(100);
+                    if (a < 70)
+                        number = numbers[0];
+                    else
+                        number = numbers[1];
+                    map[randomX, randomY].Text = number;
                     break;
                 }
             }
