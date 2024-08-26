@@ -180,175 +180,19 @@ namespace _2048
         {
             if (e.KeyCode == Keys.Left)
             {
-                for (int i = 0; i < _mapSize; i++)
-                {
-                    for (int j = 0; j < _mapSize; j++)
-                    {
-                        if (map[i, j].Text != "")
-                        {
-                            for (int k = j +1 ; k < _mapSize; k++)
-                            {
-                                if (map[i, k].Text != "")
-                                {
-                                    if (map[i, j].Text == map[i, k].Text)
-                                    {
-                                        player._score += int.Parse(map[i,j].Text)*2;
-                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
-                                        map[i, k].Text = "";
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int i = 0; i < _mapSize; i++)
-                {
-                    for (int j = 0; j < _mapSize; j++)
-                    {
-                        if (map[i, j].Text == "")
-                        {
-                            for (int k = j + 1; k < _mapSize; k++)
-                            {
-                                if (map[i, k].Text != "")
-                                {
-                                    map[i, j].Text = map[i, k].Text;
-                                    map[i, k].Text = "";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+                MoveLeft();
             }
             if (e.KeyCode == Keys.Right)
             {
-                for (int i = 0; i < _mapSize; i++)
-                {
-                    for (int j = _mapSize - 1; j >= 0; j--)
-                    {
-                        if (map[i, j].Text != "")
-                        {
-                            for (int k = j - 1; k >= 0; k--)
-                            {
-                                if (map[i, k].Text != "")
-                                {
-                                    if (map[i, k].Text == map[i, j].Text)
-                                    {
-                                        player._score += int.Parse(map[i,j].Text)*2;
-                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
-                                        map[i, k].Text = "";
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-               }
-                for (int i = 0; i < _mapSize; i++)
-                {
-                    for (int j = _mapSize - 1; j >= 0; j--)
-                    {
-                        if (map[i, j].Text == "")
-                        {
-                            for (int k = j - 1; k >= 0; k--)
-                            {
-                                if (map[i,k].Text != "")
-                                {
-                                    map[i, j].Text = map[i, k].Text;
-                                    map[i, k].Text = "";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+                MoveRight();
             }
             if (e.KeyCode == Keys.Down)
             {
-                for (int j = 0; j < _mapSize; j++)
-                {
-                    for (int i = _mapSize-1; i >= 0; i--)
-                    {
-                        if (map[i, j].Text != "")
-                        {
-                            for (int k = i - 1; k >= 0; k--)
-                            {
-                                if (map[k, j].Text != "")
-                                {
-                                    if (map[i, j].Text == map[k, j].Text)
-                                    {
-                                        player._score += int.Parse(map[i,j].Text)*2;
-                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
-                                        map[k, j].Text = "";
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int j = 0; j < _mapSize; j++)
-                {
-                     for (int i = _mapSize-1; i >= 0; i--)
-                    {
-                        if (map[i, j].Text == "")
-                        {
-                            for (int k = i - 1; k >= 0; k--)
-                            {
-                                if ((map[k, j].Text != ""))
-                                {
-                                    map[i, j].Text = map[k, j].Text;
-                                    map[k, j].Text = "";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+                MoveDown();
             }
             if (e.KeyCode == Keys.Up)
             {
-                for (int j = 0; j < _mapSize; j++)
-                {
-                    for (int i = 0; i < _mapSize; i++)
-                    {
-                        if (map[i, j].Text != "")
-                        {
-                            for (int k = i + 1; k < _mapSize; k++)
-                            {
-                                if (map[k, j].Text != "")
-                                {
-                                    if (map[i, j].Text == map[k, j].Text)
-                                    {
-                                        player._score += int.Parse(map[i,j].Text)*2;
-                                        map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
-                                        map[k, j].Text = "";
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int j = 0; j < _mapSize; j++)
-                {
-                    for (int i = 0; i < _mapSize; i++)
-                    {
-                        if (map[i, j].Text == "")
-                        {
-                            for (int k = i + 1; k < mapSize; k++)
-                            {
-                                if ((map[k, j].Text != "")) 
-                                { 
-                                map[i, j].Text = map[k, j].Text;
-                                map[k, j].Text = "";
-                                break;
-                                }
-                            }
-                        }
-                    }
-                }
+                MoveUp();
             }
             if (e.KeyCode != Keys.Up && e.KeyCode != Keys.Down && e.KeyCode != Keys.Right && e.KeyCode != Keys.Left)
             {
@@ -358,6 +202,182 @@ namespace _2048
                 CreateRandomBlock();
             ShowScore();
             SetColor();
+        }
+
+        private void MoveUp()
+        {
+            for (int j = 0; j < _mapSize; j++)
+            {
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    if (map[i, j].Text != "")
+                    {
+                        for (int k = i + 1; k < _mapSize; k++)
+                        {
+                            if (map[k, j].Text != "")
+                            {
+                                if (map[i, j].Text == map[k, j].Text)
+                                {
+                                    player._score += int.Parse(map[i, j].Text) * 2;
+                                    map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                    map[k, j].Text = "";
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < _mapSize; j++)
+            {
+                for (int i = 0; i < _mapSize; i++)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        for (int k = i + 1; k < mapSize; k++)
+                        {
+                            if ((map[k, j].Text != ""))
+                            {
+                                map[i, j].Text = map[k, j].Text;
+                                map[k, j].Text = "";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MoveDown()
+        {
+            for (int j = 0; j < _mapSize; j++)
+            {
+                for (int i = _mapSize - 1; i >= 0; i--)
+                {
+                    if (map[i, j].Text != "")
+                    {
+                        for (int k = i - 1; k >= 0; k--)
+                        {
+                            if (map[k, j].Text != "")
+                            {
+                                if (map[i, j].Text == map[k, j].Text)
+                                {
+                                    player._score += int.Parse(map[i, j].Text) * 2;
+                                    map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                    map[k, j].Text = "";
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < _mapSize; j++)
+            {
+                for (int i = _mapSize - 1; i >= 0; i--)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        for (int k = i - 1; k >= 0; k--)
+                        {
+                            if ((map[k, j].Text != ""))
+                            {
+                                map[i, j].Text = map[k, j].Text;
+                                map[k, j].Text = "";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MoveRight()
+        {
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = _mapSize - 1; j >= 0; j--)
+                {
+                    if (map[i, j].Text != "")
+                    {
+                        for (int k = j - 1; k >= 0; k--)
+                        {
+                            if (map[i, k].Text != "")
+                            {
+                                if (map[i, k].Text == map[i, j].Text)
+                                {
+                                    player._score += int.Parse(map[i, j].Text) * 2;
+                                    map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                    map[i, k].Text = "";
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = _mapSize - 1; j >= 0; j--)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        for (int k = j - 1; k >= 0; k--)
+                        {
+                            if (map[i, k].Text != "")
+                            {
+                                map[i, j].Text = map[i, k].Text;
+                                map[i, k].Text = "";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MoveLeft()
+        {
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    if (map[i, j].Text != "")
+                    {
+                        for (int k = j + 1; k < _mapSize; k++)
+                        {
+                            if (map[i, k].Text != "")
+                            {
+                                if (map[i, j].Text == map[i, k].Text)
+                                {
+                                    player._score += int.Parse(map[i, j].Text) * 2;
+                                    map[i, j].Text = (int.Parse(map[i, j].Text) * 2).ToString();
+                                    map[i, k].Text = "";
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < _mapSize; i++)
+            {
+                for (int j = 0; j < _mapSize; j++)
+                {
+                    if (map[i, j].Text == "")
+                    {
+                        for (int k = j + 1; k < _mapSize; k++)
+                        {
+                            if (map[i, k].Text != "")
+                            {
+                                map[i, j].Text = map[i, k].Text;
+                                map[i, k].Text = "";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private bool MapOverLoad()
