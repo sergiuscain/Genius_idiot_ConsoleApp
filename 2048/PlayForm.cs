@@ -22,7 +22,7 @@ namespace _2048
         string[] numbers = { "2", "4" };
         Player player;
         int record;
-        string pathOfRecord = "record.txt";
+        public static string pathOfRecord = "record.txt";
         public static int mapSize
         {
             get
@@ -348,6 +348,10 @@ namespace _2048
         private void ReWriteRecord(int record)
         {
             File.WriteAllText(pathOfRecord, record.ToString());
+        }
+        public static void RecordReSet()
+        {
+            File.WriteAllText(pathOfRecord, "0");
         }
     }
 }

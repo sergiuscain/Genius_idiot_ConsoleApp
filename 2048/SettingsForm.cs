@@ -26,12 +26,17 @@ namespace _2048
                 if (int.Parse(blockSize_TextBox.Text) < 10 || int.Parse(blockSize_TextBox.Text) > 200 || int.Parse(mapSize_TextBox.Text) < 2 || int.Parse(mapSize_TextBox.Text) > 10)
                     return;
                 else
-                    this.DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
             }
             catch
             {
                 MessageBox.Show("Unable to save settings. Perhaps you entered incorrect data.");
             }
-       }
+        }
+
+        private void reSet_Button_Click(object sender, EventArgs e)
+        {
+            PlayForm.RecordReSet();
+        }
     }
 }

@@ -33,6 +33,7 @@
             blockSize_Label = new Label();
             mapSize_TextBox = new TextBox();
             blockSize_TextBox = new TextBox();
+            reSet_Button = new Button();
             SuspendLayout();
             // 
             // saveSettings_Button
@@ -79,12 +80,24 @@
             blockSize_TextBox.Size = new Size(59, 23);
             blockSize_TextBox.TabIndex = 4;
             // 
+            // reSet_Button
+            // 
+            reSet_Button.FlatStyle = FlatStyle.Flat;
+            reSet_Button.Location = new Point(11, 261);
+            reSet_Button.Name = "reSet_Button";
+            reSet_Button.Size = new Size(99, 23);
+            reSet_Button.TabIndex = 5;
+            reSet_Button.Text = "Record ReSet";
+            reSet_Button.UseVisualStyleBackColor = true;
+            reSet_Button.Click += reSet_Button_Click;
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(369, 304);
+            Controls.Add(reSet_Button);
             Controls.Add(blockSize_TextBox);
             Controls.Add(mapSize_TextBox);
             Controls.Add(blockSize_Label);
@@ -103,5 +116,6 @@
         private Label blockSize_Label;
         private TextBox mapSize_TextBox;
         private TextBox blockSize_TextBox;
+        private Button reSet_Button;
     }
 }
