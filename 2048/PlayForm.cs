@@ -22,7 +22,8 @@ namespace _2048
         string[] numbers = { "2", "4" };
         Player player;
         int record;
-        public static string pathOfRecord = $"record{mapSize}.txt";
+        public static string pathOfRecord = $"record.txt";
+        public string pathOfCurrenRecord = "";
         public static int mapSize
         {
             get
@@ -81,9 +82,10 @@ namespace _2048
 
         private void PlayForm_Load(object sender, EventArgs e)
         {
+            pathOfCurrenRecord = $"record{mapSize}.txt";
             CreateMap(mapSize);
             CreateRandomBlock();
-            record = SaveResults.GetRecord(pathOfRecord);
+            record = SaveResults.GetRecord(pathOfCurrenRecord);
             ShowScore();
             SetColor();
         }
@@ -438,7 +440,7 @@ namespace _2048
             {
                 record = player._score;
                 recordLabel.Text = "Record: " + record;
-                SaveResults.ReWriteRecord(record, pathOfRecord);
+                SaveResults.ReWriteRecord(record, pathOfCurrenRecord);
             }
             else
             {
