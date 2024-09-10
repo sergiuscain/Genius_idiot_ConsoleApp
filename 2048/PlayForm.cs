@@ -22,7 +22,7 @@ namespace _2048
         string[] numbers = { "2", "4" };
         Player player;
         int record;
-        public static string pathOfRecord = "record.txt";
+        public static string pathOfRecord = $"record{mapSize}.txt";
         public static int mapSize
         {
             get
@@ -83,7 +83,7 @@ namespace _2048
         {
             CreateMap(mapSize);
             CreateRandomBlock();
-            record = GetRecord();
+            record = SaveResults.GetRecord(pathOfRecord);
             ShowScore();
             SetColor();
         }
@@ -438,34 +438,14 @@ namespace _2048
             {
                 record = player._score;
                 recordLabel.Text = "Record: " + record;
-                ReWriteRecord(record);
+                SaveResults.ReWriteRecord(record, pathOfRecord);
             }
             else
             {
                 recordLabel.Text = "Record: " + record;
             }
         }
-        private int GetRecord()
-        {
-            if (File.Exists(pathOfRecord))
-            {
-                string record = File.ReadAllText(pathOfRecord);
-                return int.Parse(record);
-            }
-            else
-            {
-                File.WriteAllText(pathOfRecord, "0"); 
-                return 0;
-            }
-        }
-        private void ReWriteRecord(int record)
-        {
-            File.WriteAllText(pathOfRecord, record.ToString());
-        }
-        public static void RecordReSet()
-        {
-            File.WriteAllText(pathOfRecord, "0");
-        }
+       
     }
 }
 //Мур
