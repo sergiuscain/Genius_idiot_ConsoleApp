@@ -8,7 +8,7 @@ namespace _2048
 {
     internal class Player
     {
-        string name;
+        internal string name;
         private int score;
         public int _score
         {

@@ -30,6 +30,7 @@
         {
             scoreLabel = new Label();
             recordLabel = new Label();
+            nameLabel = new Label();
             SuspendLayout();
             // 
             // scoreLabel
@@ -48,6 +49,15 @@
             recordLabel.Size = new Size(0, 15);
             recordLabel.TabIndex = 1;
             // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new Point(230, 6);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(37, 15);
+            nameLabel.TabIndex = 2;
+            nameLabel.Text = "name";
+            // 
             // PlayForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -55,6 +65,7 @@
             AutoSize = true;
             BackColor = Color.FromArgb(210, 242, 187);
             ClientSize = new Size(284, 261);
+            Controls.Add(nameLabel);
             Controls.Add(recordLabel);
             Controls.Add(scoreLabel);
             Cursor = Cursors.Cross;
@@ -72,5 +83,6 @@
 
         private Label scoreLabel;
         private Label recordLabel;
+        private Label nameLabel;
     }
 }

@@ -88,6 +88,7 @@ namespace _2048
             record = SaveResults.GetRecord(pathOfCurrenRecord);
             ShowScore();
             SetColor();
+            nameLabel.Text = player.name;
         }
 
         private void SetColor()
