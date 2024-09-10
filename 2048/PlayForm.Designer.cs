@@ -53,10 +53,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.FromArgb(210, 242, 187);
             ClientSize = new Size(284, 261);
             Controls.Add(recordLabel);
             Controls.Add(scoreLabel);
+            Cursor = Cursors.Cross;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "PlayForm";
             Text = "PlayForm";
             FormClosed += PlayForm_FormClosed;

@@ -107,7 +107,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightSteelBlue;
+            BackColor = Color.FromArgb(210, 242, 187);
             ClientSize = new Size(457, 148);
             Controls.Add(settings_Button);
             Controls.Add(name_textBox);
@@ -115,6 +115,7 @@
             Controls.Add(exit_Button);
             Controls.Add(showTableOfRecords_Button);
             Controls.Add(play_Button);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "MainMenu_Form";
             Text = "2048";
             ResumeLayout(false);

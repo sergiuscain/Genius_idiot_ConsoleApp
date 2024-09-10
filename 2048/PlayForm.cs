@@ -101,33 +101,47 @@ namespace _2048
                         case "":
                             map[i,j].BackColor = Color.White; break;
                         case "2":
-                            map[i, j].BackColor = Color.LightGray; break;
+                            map[i, j].BackColor = Color.FromArgb(210, 242, 187); break;
                         case "4":
-                            map[i, j].BackColor = Color.Orange; break;
+                            map[i, j].BackColor = Color.FromArgb(194, 232, 168); break;
                         case "8":
-                            map[i, j].BackColor = Color.Yellow; break;
+                            map[i, j].BackColor = Color.FromArgb(149, 198, 115); break;
                         case "16":
-                            map[i, j].BackColor = Color.Green; break;
+                            map[i, j].BackColor = Color.FromArgb(109, 158, 75); break;
                         case "32":
-                            map[i, j].BackColor = Color.Blue; break;
+                            map[i, j].BackColor = Color.FromArgb(67, 148, 94); break;
                         case "64":
-                            map[i, j].BackColor = Color.Red; break;
+                            map[i, j].BackColor = Color.FromArgb(44, 122, 71); break;
                         case "128":
-                            map[i, j].BackColor = Color.Purple; break;
+                            map[i, j].BackColor = Color.FromArgb(33, 108, 97); break;
                         case "256":
-                            map[i, j].BackColor = Color.DarkRed; break;
+                            map[i, j].BackColor = Color.FromArgb(34, 101, 110); break;
                         case "512":
-                            map[i, j].BackColor = Color.DarkBlue; break;
+                            map[i, j].BackColor = Color.FromArgb(34, 80, 110); break;
                         case "1024":
-                            map[i, j].BackColor = Color.DarkGreen; break;
+                            map[i, j].BackColor = Color.FromArgb(34, 42, 110); break;
                         case "2048":
-                            map[i,j].BackColor = Color.RebeccaPurple; break;
+                            map[i,j].BackColor = Color.FromArgb(26, 20, 107); break;
                         case "4096":
-                            map[i, j].BackColor = Color.Crimson; break;
+                            map[i, j].BackColor = Color.FromArgb(161, 104, 255); break;
                         case "8192":
-                            map[i, j].BackColor = Color.DarkCyan; break;
+                            map[i, j].BackColor = Color.FromArgb(160, 84, 240); break;
+                        case "16384":
+                            map[i, j].BackColor = Color.FromArgb(193, 56, 221); break;
+                        case "32768":
+                            map[i, j].BackColor = Color.FromArgb(208, 35, 178); break;
+                        case "65536":
+                            map[i, j].BackColor = Color.FromArgb(196, 33, 121); break;
+                        case "131072":
+                            map[i, j].BackColor = Color.FromArgb(184, 18, 73); break;
+                        case "262144":
+                            map[i, j].BackColor = Color.FromArgb(163, 12, 62); break;
+                        case "524288":
+                            map[i, j].BackColor = Color.FromArgb(125, 5, 39); break;
+                        case "1048576":
+                            map[i, j].BackColor = Color.FromArgb(87, 2, 11); break;
                         default:
-                            map[i, j].BackColor = Color.DarkKhaki; break;
+                            map[i, j].BackColor = Color.FromArgb(39, 0, 4); break;
                     }
                 }
             }

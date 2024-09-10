@@ -48,6 +48,7 @@
             // 
             // button3x3
             // 
+            button3x3.FlatStyle = FlatStyle.Flat;
             button3x3.Location = new Point(12, 12);
             button3x3.Name = "button3x3";
             button3x3.Size = new Size(73, 68);
@@ -58,6 +59,7 @@
             // 
             // button4x4
             // 
+            button4x4.FlatStyle = FlatStyle.Flat;
             button4x4.Location = new Point(91, 12);
             button4x4.Name = "button4x4";
             button4x4.Size = new Size(73, 68);
@@ -68,6 +70,7 @@
             // 
             // button5x5
             // 
+            button5x5.FlatStyle = FlatStyle.Flat;
             button5x5.Location = new Point(12, 86);
             button5x5.Name = "button5x5";
             button5x5.Size = new Size(73, 68);
@@ -78,6 +81,7 @@
             // 
             // button6x6
             // 
+            button6x6.FlatStyle = FlatStyle.Flat;
             button6x6.Location = new Point(91, 86);
             button6x6.Name = "button6x6";
             button6x6.Size = new Size(73, 68);
@@ -90,7 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.FromArgb(210, 242, 187);
             ClientSize = new Size(209, 206);
             Controls.Add(button6x6);
             Controls.Add(button5x5);
