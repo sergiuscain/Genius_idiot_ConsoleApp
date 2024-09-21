@@ -53,7 +53,7 @@ namespace GeniusIdiot_WinForms
                     List<Player> list = JsonConvert.DeserializeObject<List<Player>>(jsonData);
                     foreach (Player p in list)
                     {
-                        string[] lines = {p.name, p.countRightAnswers.ToString(), p.diagnose};
+                        string[] lines = { p.name, p.countRightAnswers.ToString(), p.diagnose };
                         resultsGridView.Rows.Add(lines);
                     }
                 }
@@ -62,6 +62,11 @@ namespace GeniusIdiot_WinForms
                     File.Create(Player.pathOfJSONResults).Close();
                 }
             }
+        }
+
+        private void resultsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

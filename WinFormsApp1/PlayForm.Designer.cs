@@ -32,6 +32,7 @@
             textQuestLabel = new Label();
             userAnswerTextBox = new TextBox();
             nextQuestion = new Button();
+            freeTime_label = new Label();
             SuspendLayout();
             // 
             // BackButton
@@ -51,7 +52,7 @@
             // 
             textQuestLabel.AutoSize = true;
             textQuestLabel.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
-            textQuestLabel.Location = new Point(8, 22);
+            textQuestLabel.Location = new Point(8, 9);
             textQuestLabel.Name = "textQuestLabel";
             textQuestLabel.Size = new Size(38, 15);
             textQuestLabel.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             // userAnswerTextBox
             // 
-            userAnswerTextBox.Location = new Point(8, 63);
+            userAnswerTextBox.Location = new Point(8, 103);
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(413, 23);
             userAnswerTextBox.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             nextQuestion.FlatStyle = FlatStyle.Flat;
             nextQuestion.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            nextQuestion.Location = new Point(331, 97);
+            nextQuestion.Location = new Point(427, 99);
             nextQuestion.Name = "nextQuestion";
             nextQuestion.Size = new Size(90, 27);
             nextQuestion.TabIndex = 3;
@@ -76,12 +77,22 @@
             nextQuestion.UseVisualStyleBackColor = true;
             nextQuestion.Click += nextQuestion_Click;
             // 
+            // freeTime_label
+            // 
+            freeTime_label.AutoSize = true;
+            freeTime_label.Location = new Point(8, 85);
+            freeTime_label.Name = "freeTime_label";
+            freeTime_label.Size = new Size(93, 15);
+            freeTime_label.TabIndex = 4;
+            freeTime_label.Text = "Время на ответ:";
+            // 
             // PlayForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(853, 370);
+            Controls.Add(freeTime_label);
             Controls.Add(nextQuestion);
             Controls.Add(userAnswerTextBox);
             Controls.Add(textQuestLabel);
@@ -99,5 +110,6 @@
         private Label textQuestLabel;
         private TextBox userAnswerTextBox;
         private Button nextQuestion;
+        private Label freeTime_label;
     }
 }

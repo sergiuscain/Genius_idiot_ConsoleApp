@@ -43,6 +43,7 @@
             resultsGridView.Name = "resultsGridView";
             resultsGridView.Size = new Size(343, 449);
             resultsGridView.TabIndex = 0;
+            resultsGridView.CellContentClick += resultsGridView_CellContentClick;
             // 
             // Name
             // 
