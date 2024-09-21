@@ -38,6 +38,11 @@ namespace GeniusIdiot_WinForms
 
         private void nextQuestion_Click(object sender, EventArgs e)
         {
+            Next_Button();
+        }
+
+        private void Next_Button()
+        {
             timer.Stop();
             string userAnswerStr = userAnswerTextBox.Text;
             if (questions.questions.Count < 1)
@@ -59,7 +64,7 @@ namespace GeniusIdiot_WinForms
                 else
                 {
                     NextQuestion();
-                } 
+                }
             }
             else
             {
@@ -83,7 +88,7 @@ namespace GeniusIdiot_WinForms
             nameForm.ShowDialog();
             player = new Player();
             player.name = nameForm.nameTextBox.Text;
-            timer.Interval = responseTime*1000;
+            timer.Interval = responseTime * 1000;
             timer.Tick += Failed_Timer_Tick;
             updateTimerInfo.Interval = 100;
             updateTimerInfo.Tick += UpdateTimerInfo_Tick;
@@ -92,12 +97,12 @@ namespace GeniusIdiot_WinForms
 
         private void UpdateTimerInfo_Tick(object? sender, EventArgs e)
         {
-            if (freeTime <=0)
+            if (freeTime <= 0)
                 updateTimerInfo.Stop();
             else
             {
                 freeTime -= 110;
-                freeTime_label.Text = $"Время на ответ:{freeTime/100}";
+                freeTime_label.Text = $"Время на ответ:{freeTime / 100}";
             }
         }
 
@@ -112,16 +117,32 @@ namespace GeniusIdiot_WinForms
 
         private void NextQuestion()
         {
-            if (questions.questions.Count < 1) 
-                GameOver(); 
+            if (questions.questions.Count < 1)
+                GameOver();
             else
             {
                 randomQuestionIndex = new Random().Next(0, questions.Count());
                 textQuestLabel.Text = questions.questions[randomQuestionIndex].question;
                 timer.Start();
                 userAnswerTextBox.Clear();
-                freeTime = responseTime*1000;
+                freeTime = responseTime * 1000;
                 updateTimerInfo.Start();
+            }
+        }
+
+        private void PlayForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Next_Button();
+            }
+        }
+
+        private void userAnswerTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Next_Button();
             }
         }
     }

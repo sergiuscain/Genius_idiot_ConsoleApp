@@ -67,6 +67,8 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(343, 447);
             Controls.Add(resultsGridView);
+            
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ResultsForm";
             Load += ResultsForm_Load;
             ((System.ComponentModel.ISupportInitialize)resultsGridView).EndInit();

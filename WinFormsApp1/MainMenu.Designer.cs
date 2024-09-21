@@ -110,7 +110,9 @@
             Controls.Add(ShowQuestionsButton);
             Controls.Add(ShowResultsButton);
             Controls.Add(PlayButton);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "MainMenuForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

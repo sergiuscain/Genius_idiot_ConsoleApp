@@ -136,7 +136,9 @@
             Controls.Add(yourQuestionTextBox);
             Controls.Add(AddQuestion);
             Controls.Add(ResultsGridView);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "ShowQuestions";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ShowQuestions";
             Load += ShowQuestions_Load;
             ((System.ComponentModel.ISupportInitialize)ResultsGridView).EndInit();

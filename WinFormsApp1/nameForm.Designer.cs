@@ -71,7 +71,9 @@
             Controls.Add(enterName);
             Controls.Add(nameTextBox);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "NameForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "nameForm";
             ResumeLayout(false);
             PerformLayout();

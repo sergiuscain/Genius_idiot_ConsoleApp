@@ -64,6 +64,7 @@
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(413, 23);
             userAnswerTextBox.TabIndex = 2;
+            userAnswerTextBox.KeyDown += userAnswerTextBox_KeyDown;
             // 
             // nextQuestion
             // 
@@ -97,9 +98,12 @@
             Controls.Add(userAnswerTextBox);
             Controls.Add(textQuestLabel);
             Controls.Add(BackButton);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PlayForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PlayForm";
             Load += PlayForm_Load;
+            KeyDown += PlayForm_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }
